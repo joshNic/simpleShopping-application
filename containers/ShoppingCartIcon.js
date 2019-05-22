@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { connect } from 'react-redux';
+import { withNavigation } from 'react-navigation';
 
 const styles = StyleSheet.create({
   container: {
@@ -22,15 +24,27 @@ const styles = StyleSheet.create({
   }
 });
 
-const ShoppingCartIcon = () => {
+const ShoppingCartIcon = props => {
   return (
     <View style={{ padding: 5 }}>
       <View style={styles.iconStyle}>
-        <Text style={{ color: 'white', fontWeight: 'bold' }}>0</Text>
+        <Text style={{ color: 'white', fontWeight: 'bold' }}>
+          {props.cartItems.length}
+        </Text>
       </View>
-      <Icon name='ios-cart' size={30} />
+      <Icon
+        onPress={() => props.navigation.navigate('Cart')}
+        name='ios-cart'
+        size={30}
+      />
     </View>
   );
 };
 
-export default ShoppingCartIcon;
+const mapStateToProps = state => {
+  return {
+    cartItems: state
+  };
+};
+
+export default connect(mapStateToProps)(withNavigation(ShoppingCartIcon));

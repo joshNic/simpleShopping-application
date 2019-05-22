@@ -15,7 +15,7 @@ export default class Products extends Component {
       return (
         <View key={index} style={{ padding: 20 }}>
           <Button
-            onPress={() => alert('Added to cart')}
+            onPress={() => this.props.onPress(item)}
             title={item.name + ' - ' + item.price}
           />
         </View>

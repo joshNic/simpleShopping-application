@@ -5,6 +5,7 @@ import BooksScreen from './containers/BooksScreen';
 import HomeScreen from './containers/HomeScreen';
 import ElectronicsScreen from './containers/ElectronicsScreen';
 import ShoppingCartIcon from './containers/ShoppingCartIcon';
+import CartScreen from './containers/CartScreen';
 
 const styles = StyleSheet.create({
   container: {
@@ -19,7 +20,8 @@ const AppStackNavigator = createStackNavigator(
   {
     Home: HomeScreen,
     Electronics: ElectronicsScreen,
-    Books: BooksScreen
+    Books: BooksScreen,
+    Cart: CartScreen
   },
   {
     navigationOptions: {
